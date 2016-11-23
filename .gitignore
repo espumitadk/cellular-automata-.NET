@@ -1,5 +1,9 @@
-target
-*~*
-.nrepl-port
-*.iml
-.idea
+*.user
+
+.vs
+bin
+obj
+packages
+Spec/*
+*.ncrunchproject
+*.ncrunchsolution
