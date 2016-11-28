@@ -18,11 +18,27 @@ namespace CellularAutomata.Test {
             rule30.Received(3).Apply(Arg.Any<Neighborhood>());
         }
 
+        [Test]
+        public void consider_borders_as_deaths_cells()
+        {
+            var rule30 = Substitute.For<Rule30>();
+            var automata = new Automata(GivenCells(), rule30);
 
-        private static List<Cell> GivenCells() {
-            return new List<Cell>{
-                Cell.Alive, Cell.Alive, Cell.Alive
-            };
+            automata.Evolve();
+
+            rule30.Received().Apply(new Neighborhood(Cell.Death, Cell.Alive, Cell.Alive));
+            rule30.Received().Apply(new Neighborhood(Cell.Alive, Cell.Alive, Cell.Alive));
+            rule30.Received().Apply(new Neighborhood(Cell.Alive, Cell.Alive, Cell.Death));
+        }
+
+
+        private static LinkedList<Cell> GivenCells() {
+            var result = new LinkedList<Cell>();
+            result.AddLast(Cell.Alive);
+            result.AddLast(Cell.Alive);
+            result.AddLast(Cell.Alive);
+            return result;
+
         }
 
     }
