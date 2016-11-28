@@ -13,7 +13,6 @@ namespace CellularAutomata {
         }
 
         public void Evolve() {
-
             cells.ForEach(x => rule.Apply(new Neighborhood(Cell.Alive, Cell.Alive, Cell.Alive)));
         }
 

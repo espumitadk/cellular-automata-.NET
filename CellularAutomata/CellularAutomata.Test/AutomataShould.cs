@@ -15,12 +15,13 @@ namespace CellularAutomata.Test {
 
             automata.Evolve();
 
-            rule30.Received(7).Apply(Arg.Any<Neighborhood>());
+            rule30.Received(3).Apply(Arg.Any<Neighborhood>());
         }
+
 
         private static List<Cell> GivenCells() {
             return new List<Cell>{
-                Cell.Alive, Cell.Alive, Cell.Death, Cell.Alive, Cell.Death, Cell.Alive, Cell.Death
+                Cell.Alive, Cell.Alive, Cell.Alive
             };
         }
 
