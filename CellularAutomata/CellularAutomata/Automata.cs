@@ -2,8 +2,7 @@ using System.Collections.Generic;
 
 namespace CellularAutomata {
 
-    public class Automata
-    {
+    public class Automata {
 
         private readonly List<Cell> cells;
         private Rule30 rule;
@@ -13,8 +12,9 @@ namespace CellularAutomata {
             this.rule = rule;
         }
 
-        public void Iterate() {
-            cells.ForEach(x => rule.Apply(new Neighborhood()));
+        public void Evolve() {
+
+            cells.ForEach(x => rule.Apply(new Neighborhood(Cell.Alive, Cell.Alive, Cell.Alive)));
         }
 
     }
