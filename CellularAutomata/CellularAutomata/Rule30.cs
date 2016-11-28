@@ -12,7 +12,7 @@ namespace CellularAutomata {
         };
 
         public virtual Cell Apply(Neighborhood neighborhood) {
-            return equivalences[neighborhood];
+            return equivalences.ContainsKey(neighborhood) ? Cell.Death : Cell.Alive;
         }
 
     }
