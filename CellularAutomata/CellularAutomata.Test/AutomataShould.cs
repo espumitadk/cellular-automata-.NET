@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -19,8 +21,7 @@ namespace CellularAutomata.Test {
         }
 
         [Test]
-        public void consider_borders_as_deaths_cells()
-        {
+        public void consider_borders_as_dead_cells() {
             var rule30 = Substitute.For<Rule30>();
             var automata = new Automata(GivenCells(), rule30);
 
@@ -31,6 +32,19 @@ namespace CellularAutomata.Test {
             rule30.Received().Apply(new Neighborhood(Cell.Alive, Cell.Alive, Cell.Death));
         }
 
+        [Test]
+        public void have_next_generation_after_evolve() {
+            var rule30 = new Rule30();
+            var automata = new Automata(GivenCells(), rule30);
+
+            automata.Evolve();
+
+            var evolvedGeneration = new LinkedList<Cell>();
+            evolvedGeneration.AddLast(Cell.Alive);
+            evolvedGeneration.AddLast(Cell.Death);
+            evolvedGeneration.AddLast(Cell.Death);
+            automata.HistoryOfGenerations[1].Should().BeEquivalentTo(evolvedGeneration);
+        }
 
         private static LinkedList<Cell> GivenCells() {
             var result = new LinkedList<Cell>();
@@ -38,7 +52,6 @@ namespace CellularAutomata.Test {
             result.AddLast(Cell.Alive);
             result.AddLast(Cell.Alive);
             return result;
-
         }
 
     }
