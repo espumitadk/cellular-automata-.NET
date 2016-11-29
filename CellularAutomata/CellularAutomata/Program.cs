@@ -8,9 +8,9 @@ namespace CellularAutomata {
 
         static void Main(string[] args) {
             var cells = Cells();
-            var rule30 = new Rule30();
-            var automata = new Automata(cells, rule30);
-            Enumerable.Range(0, 20).ForEach(x => automata.Evolve());
+            var rule = new Rule90();
+            var automata = new Automata(cells, rule);
+            Enumerable.Range(0, 25).ForEach(x => automata.Evolve());
             ConsolePanel.Print(automata.HistoryOfGenerations);
 
             Console.ReadLine();

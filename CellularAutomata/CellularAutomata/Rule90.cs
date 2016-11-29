@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace CellularAutomata {
 
-    public class Rule90 {
+    public class Rule90 : Rule{
 
         private readonly Dictionary<Neighborhood, Cell> equivalences = new Dictionary<Neighborhood, Cell> {
             { new Neighborhood(Cell.Alive, Cell.Alive, Cell.Alive), Cell.Death },

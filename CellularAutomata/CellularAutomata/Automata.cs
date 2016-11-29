@@ -7,10 +7,10 @@ namespace CellularAutomata {
     public class Automata {
 
         public LinkedList<Cell> CurrentGeneration { get; private set; }
-        private readonly Rule30 rule;
+        private readonly Rule rule;
         public List<LinkedList<Cell>> HistoryOfGenerations { get; private set; }
 
-        public Automata(LinkedList<Cell> currentGeneration, Rule30 rule) {
+        public Automata(LinkedList<Cell> currentGeneration, Rule rule) {
             this.CurrentGeneration = currentGeneration;
             this.rule = rule;
             HistoryOfGenerations = new List<LinkedList<Cell>> { currentGeneration };
