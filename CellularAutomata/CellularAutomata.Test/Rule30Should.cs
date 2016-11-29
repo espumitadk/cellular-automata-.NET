@@ -23,7 +23,7 @@ namespace CellularAutomata.Test {
         [TestCase(Cell.Death, Cell.Alive, Cell.Alive)]
         [TestCase(Cell.Death, Cell.Alive, Cell.Death)]
         [TestCase(Cell.Death, Cell.Death, Cell.Alive)]
-        public void give_a_alive_cell_when_neighborhood_is_(Cell leftCell, Cell centerCell, Cell rightCell)
+        public void give_an_alive_cell_when_neighborhood_is_(Cell leftCell, Cell centerCell, Cell rightCell)
         {
             var rule = new Rule30();
             var neighborhood = new Neighborhood(leftCell, centerCell, rightCell);

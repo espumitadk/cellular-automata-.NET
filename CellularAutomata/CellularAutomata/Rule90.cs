@@ -11,7 +11,7 @@ namespace CellularAutomata {
             new Neighborhood(Cell.Death, Cell.Death, Cell.Death),
         };
 
-        public virtual Cell Apply(Neighborhood neighborhood)
+        public Cell Apply(Neighborhood neighborhood)
         {
             return killerNeighborhoods.Contains(neighborhood) ? Cell.Death : Cell.Alive;
         }
