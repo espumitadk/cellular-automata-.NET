@@ -71,6 +71,7 @@
     <Compile Include="AutomataShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule30Should.cs" />
+    <Compile Include="Rule90Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
