@@ -10,10 +10,7 @@ namespace CellularAutomata {
         }
 
         private static void PrintLine(LinkedList<Cell> generation) {
-            foreach (var cell in generation)
-            {
-                Console.Write(cell == Cell.Alive ? "x" : " ");
-            }
+            generation.ForEach(cell => Console.Write(cell == Cell.Alive ? "x" : " "));
             Console.Write("\n");
         }
 
