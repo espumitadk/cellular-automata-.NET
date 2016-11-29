@@ -28,9 +28,8 @@ namespace CellularAutomata {
             CurrentGeneration = nextGeneration;
         }
 
-        private static Cell CheckBorder(LinkedListNode<Cell> node) {
-            var cell = node? .Value ?? Cell.Death;
-            return cell;
+        private static Cell CheckBorder(LinkedListNode<Cell> cell) {
+            return cell? .Value ?? Cell.Death;
         }
 
 

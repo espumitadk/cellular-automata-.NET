@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Automata.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="ConsolePanel.cs" />
     <Compile Include="Neighborhood.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
