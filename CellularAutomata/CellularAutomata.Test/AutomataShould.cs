@@ -46,6 +46,20 @@ namespace CellularAutomata.Test {
             automata.HistoryOfGenerations[1].Should().BeEquivalentTo(evolvedGeneration);
         }
 
+        [Test]
+        public void update_current_generation_after_evolve() {
+            var rule30 = new Rule30();
+            var automata = new Automata(GivenCells(), rule30);
+
+            automata.Evolve();
+
+            var evolvedGeneration = new LinkedList<Cell>();
+            evolvedGeneration.AddLast(Cell.Alive);
+            evolvedGeneration.AddLast(Cell.Death);
+            evolvedGeneration.AddLast(Cell.Death);
+            automata.CurrentGeneration.Should().BeEquivalentTo(evolvedGeneration);
+        }
+
         private static LinkedList<Cell> GivenCells() {
             var result = new LinkedList<Cell>();
             result.AddLast(Cell.Alive);

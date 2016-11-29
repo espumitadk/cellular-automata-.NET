@@ -6,25 +6,26 @@ namespace CellularAutomata {
 
     public class Automata {
 
-        private readonly LinkedList<Cell> cells;
+        public LinkedList<Cell> CurrentGeneration { get; private set; }
         private readonly Rule30 rule;
         public List<LinkedList<Cell>> HistoryOfGenerations { get; private set; }
 
-        public Automata(LinkedList<Cell> cells, Rule30 rule) {
-            this.cells = cells;
+        public Automata(LinkedList<Cell> currentGeneration, Rule30 rule) {
+            this.CurrentGeneration = currentGeneration;
             this.rule = rule;
-            HistoryOfGenerations = new List<LinkedList<Cell>> { cells };
+            HistoryOfGenerations = new List<LinkedList<Cell>> { currentGeneration };
         }
 
         public void Evolve() {
             var nextGeneration = new LinkedList<Cell>();
-            for (var cell = cells.First; cell != null; cell = cell.Next)
+            for (var cell = CurrentGeneration.First; cell != null; cell = cell.Next)
             {
                 nextGeneration.AddLast(
                     rule.Apply(new Neighborhood(CheckBorder(cell.Previous), cell.Value, CheckBorder(cell.Next)))
                 );
             }
             HistoryOfGenerations.Add(nextGeneration);
+            CurrentGeneration = nextGeneration;
         }
 
         private static Cell CheckBorder(LinkedListNode<Cell> node) {
